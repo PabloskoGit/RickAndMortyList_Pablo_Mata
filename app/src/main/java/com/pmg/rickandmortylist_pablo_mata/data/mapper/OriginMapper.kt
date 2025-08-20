@@ -1,6 +1,6 @@
 package com.pmg.rickandmortylist_pablo_mata.data.mapper
 
-import com.pmg.rickandmortylist_pablo_mata.data.remote.dto.CharacterOriginDto
+import com.pmg.rickandmortylist_pablo_mata.data.remote.dto.character.CharacterOriginDto
 import com.pmg.rickandmortylist_pablo_mata.domain.model.CharacterOrigin
 
 object OriginMapper {

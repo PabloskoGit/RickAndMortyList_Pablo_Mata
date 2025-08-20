@@ -1,6 +1,6 @@
 package com.pmg.rickandmortylist_pablo_mata.data.mapper
 
-import com.pmg.rickandmortylist_pablo_mata.data.remote.dto.CharacterLocationDto
+import com.pmg.rickandmortylist_pablo_mata.data.remote.dto.character.CharacterLocationDto
 import com.pmg.rickandmortylist_pablo_mata.domain.model.CharacterLocation
 
 object LocationMapper {

@@ -1,6 +1,7 @@
 package com.pmg.rickandmortylist_pablo_mata.ui.views.characters_list
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -56,6 +57,7 @@ import com.pmg.rickandmortylist_pablo_mata.domain.model.Character
 import com.pmg.rickandmortylist_pablo_mata.domain.model.CharacterLocation
 import com.pmg.rickandmortylist_pablo_mata.domain.model.CharacterOrigin
 import com.pmg.rickandmortylist_pablo_mata.ui.theme.RickAndMortyList_Pablo_MataTheme
+import com.pmg.rickandmortylist_pablo_mata.utils.ui.DetailSheet
 import com.pmg.rickandmortylist_pablo_mata.utils.ui.GradientCapsuleBox
 
 @Composable
@@ -154,8 +156,10 @@ fun CharacterListContent(
                 )
             }
             is CharactersListUIState.Success -> {
-                val lazyListState = rememberLazyListState()
 
+                var selectedCharacter by remember { mutableStateOf<Character?>(null) }
+
+                val lazyListState = rememberLazyListState()
                 val shouldLoadMore by remember {
                     derivedStateOf {
                         val lastVisibleItem = lazyListState.layoutInfo.visibleItemsInfo.lastOrNull()
@@ -164,35 +168,50 @@ fun CharacterListContent(
                         lastVisibleItem.index >= lazyListState.layoutInfo.totalItemsCount - 1 - 5
                     }
                 }
-
                 LaunchedEffect(shouldLoadMore) {
                     if (shouldLoadMore && uiState.canLoadMore && !uiState.isLoadingMore) {
                         loadMoreCharacters()
                     }
                 }
 
-                LazyColumn(
-                    modifier = Modifier,
-                    state = lazyListState,
-                    content = {
-                        items(uiState.items.size) { index ->
-                            val character = uiState.items[index]
-                            CharacterItem(
-                                character = character,
-                                imageLoader = imageLoader
-                            )
-                        }
-
-                        if (uiState.isLoadingMore) {
-                            item {
-                                CircularProgressIndicator(
-                                    strokeWidth = 2.dp,
-                                    modifier = Modifier.padding(16.dp)
+                Box(modifier = Modifier.fillMaxSize()){
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize(),
+                        state = lazyListState,
+                        content = {
+                            items(uiState.items.size) { index ->
+                                val character = uiState.items[index]
+                                CharacterItem(
+                                    character = character,
+                                    imageLoader = imageLoader,
+                                    modifier = Modifier.clickable {
+                                        selectedCharacter = character
+                                    }
                                 )
                             }
+
+                            if (uiState.isLoadingMore) {
+                                item {
+                                    CircularProgressIndicator(
+                                        strokeWidth = 2.dp,
+                                        modifier = Modifier.padding(16.dp)
+                                    )
+                                }
+                            }
                         }
+                    )
+
+                    selectedCharacter?.let { characterToShow ->
+                        DetailSheet(
+                            character = characterToShow,
+                            onDismiss = {
+                                selectedCharacter = null
+                            },
+                            modifier = Modifier.fillMaxSize(),
+                            imageLoader = imageLoader
+                        )
                     }
-                )
+                }
             }
             is CharactersListUIState.Empty -> {
                 Column(
