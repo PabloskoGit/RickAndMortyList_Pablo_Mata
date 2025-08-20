@@ -6,6 +6,7 @@ import coil.ImageLoader
 import com.pmg.rickandmortylist_pablo_mata.domain.usecase.GetCharactersUseCase
 import com.pmg.rickandmortylist_pablo_mata.domain.usecase.SearchCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -64,7 +65,7 @@ class CharacterListViewModel @Inject constructor(
             _uiState.value = currentState?.copy(isLoadingMore = true) ?: return
         }
 
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val currentState = _searchAndFilterState.value
             val result = when {
                 currentState.searchText.isNotBlank() || currentState.selectedStatus != null -> {
@@ -81,13 +82,15 @@ class CharacterListViewModel @Inject constructor(
 
             result.onSuccess { newCharacters ->
                 endReached = newCharacters.isEmpty()
-                val currentItems = if (isLoadMore) {
-                    (_uiState.value as? CharactersListUIState.Success)?.items ?: emptyList()
+
+                val currentSuccessState = _uiState.value as? CharactersListUIState.Success
+                val existingItems = if (isLoadMore) {
+                    currentSuccessState?.items ?: emptyList()
                 } else {
                     emptyList()
                 }
 
-                val allItems = currentItems + newCharacters
+                val allItems = existingItems + newCharacters
 
                 if (allItems.isEmpty()) {
                     _uiState.value = CharactersListUIState.Empty
@@ -95,28 +98,32 @@ class CharacterListViewModel @Inject constructor(
                     _uiState.value = CharactersListUIState.Success(
                         items = allItems,
                         isLoadingMore = false,
-                        canLoadMore = !endReached
+                        canLoadMore = !endReached && newCharacters.isNotEmpty()
                     )
-                    if (!endReached) currentPage++
+                    if (!endReached && newCharacters.isNotEmpty()) {
+                        currentPage++
+                    }
                 }
             }.onFailure { error ->
-                isLoading = false
-
                 val isEndOfListError = error is HttpException && error.code() == 404
 
-                if (isEndOfListError) {
+                if (isEndOfListError && isLoadMore) {
                     endReached = true
                     val currentSuccessState = _uiState.value as? CharactersListUIState.Success
                     currentSuccessState?.let {
+
                         _uiState.value = it.copy(
                             isLoadingMore = false,
                             canLoadMore = false
                         )
                     }
-                } else {
+                } else if (isEndOfListError) {
+                    _uiState.value = CharactersListUIState.Empty
+                }
+                else {
                     if (isLoadMore && _uiState.value is CharactersListUIState.Success) {
                         val currentSuccessState = _uiState.value as CharactersListUIState.Success
-                        _uiState.value = currentSuccessState.copy(isLoadingMore = false)
+                        _uiState.value = currentSuccessState.copy(isLoadingMore = false, canLoadMore = true)
                     } else {
                         _uiState.value = CharactersListUIState.Error(
                             error.localizedMessage ?: "An unexpected error occurred."
