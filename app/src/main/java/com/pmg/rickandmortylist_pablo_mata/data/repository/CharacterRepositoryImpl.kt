@@ -1,10 +1,10 @@
-package com.pmg.prueba_pablo_mata.domain.repository
+package com.pmg.rickandmortylist_pablo_mata.data.repository
 
-import com.pmg.prueba_pablo_mata.data.mapper.toMapDomainModel
-import com.pmg.prueba_pablo_mata.data.remote.api.RickAndMortyApi
-import com.pmg.prueba_pablo_mata.domain.model.Character
+import com.pmg.rickandmortylist_pablo_mata.data.mapper.toMapDomainModel
+import com.pmg.rickandmortylist_pablo_mata.data.remote.api.RickAndMortyApi
+import com.pmg.rickandmortylist_pablo_mata.domain.model.Character
+import com.pmg.rickandmortylist_pablo_mata.domain.repository.CharacterRepository
 import javax.inject.Inject
-
 
 class CharacterRepositoryImpl @Inject constructor(
     private val api: RickAndMortyApi
