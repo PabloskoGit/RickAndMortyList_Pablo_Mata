@@ -1,4 +1,4 @@
-package com.pmg.prueba_pablo_mata.data.remote.dto
+package com.pmg.rickandmortylist_pablo_mata.data.remote.dto
 
 import kotlinx.serialization.Serializable
 

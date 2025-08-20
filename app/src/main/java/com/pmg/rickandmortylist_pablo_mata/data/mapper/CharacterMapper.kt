@@ -1,7 +1,7 @@
-package com.pmg.prueba_pablo_mata.data.mapper
+package com.pmg.rickandmortylist_pablo_mata.data.mapper
 
-import com.pmg.prueba_pablo_mata.data.remote.dto.CharacterDto
-import com.pmg.prueba_pablo_mata.domain.model.Character
+import com.pmg.rickandmortylist_pablo_mata.data.remote.dto.CharacterDto
+import com.pmg.rickandmortylist_pablo_mata.domain.model.Character
 
 fun CharacterDto.toMapDomainModel(): Character {
     return Character(

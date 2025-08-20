@@ -1,4 +1,4 @@
-package com.pmg.prueba_pablo_mata.ui.navigation
+package com.pmg.rickandmortylist_pablo_mata.ui.navigation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -9,8 +9,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.pmg.prueba_pablo_mata.ui.views.characters_list.CharacterListScreen
-import com.pmg.prueba_pablo_mata.ui.views.characters_list.CharacterListViewModel
+import com.pmg.rickandmortylist_pablo_mata.ui.views.characters_list.CharacterListScreen
+import com.pmg.rickandmortylist_pablo_mata.ui.views.characters_list.CharacterListViewModel
 
 @Composable
 fun NavigationWrapper() {

@@ -1,6 +1,6 @@
-package com.pmg.prueba_pablo_mata.data.remote.api
+package com.pmg.rickandmortylist_pablo_mata.data.remote.api
 
-import com.pmg.prueba_pablo_mata.data.remote.dto.CharacterResponseDto
+import com.pmg.rickandmortylist_pablo_mata.data.remote.dto.CharacterResponseDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

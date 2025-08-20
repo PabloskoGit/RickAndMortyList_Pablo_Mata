@@ -1,7 +1,7 @@
-package com.pmg.prueba_pablo_mata.domain.usecase
+package com.pmg.rickandmortylist_pablo_mata.domain.usecase
 
-import com.pmg.prueba_pablo_mata.domain.model.Character
-import com.pmg.prueba_pablo_mata.domain.repository.CharacterRepository
+import com.pmg.rickandmortylist_pablo_mata.domain.model.Character
+import com.pmg.rickandmortylist_pablo_mata.domain.repository.CharacterRepository
 import javax.inject.Inject
 
 class GetCharactersUseCase @Inject constructor(

@@ -1,11 +1,11 @@
-package com.pmg.prueba_pablo_mata.ui.views.characters_list
+package com.pmg.rickandmortylist_pablo_mata.ui.views.characters_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
-import com.pmg.prueba_pablo_mata.domain.usecase.GetCharactersUseCase
-import com.pmg.prueba_pablo_mata.domain.usecase.SearchAndFilterUIState
-import com.pmg.prueba_pablo_mata.domain.usecase.SearchCharactersUseCase
+import com.pmg.rickandmortylist_pablo_mata.domain.usecase.GetCharactersUseCase
+import com.pmg.rickandmortylist_pablo_mata.ui.views.characters_list.SearchAndFilterUIState
+import com.pmg.rickandmortylist_pablo_mata.domain.usecase.SearchCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

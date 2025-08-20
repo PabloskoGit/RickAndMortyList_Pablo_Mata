@@ -1,4 +1,4 @@
-package com.pmg.prueba_pablo_mata
+package com.pmg.rickandmortylist_pablo_mata
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,8 +8,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.pmg.prueba_pablo_mata.ui.navigation.NavigationWrapper
-import com.pmg.prueba_pablo_mata.ui.theme.Prueba_Pablo_MataTheme
+import com.pmg.rickandmortylist_pablo_mata.ui.navigation.NavigationWrapper
+import com.pmg.rickandmortylist_pablo_mata.ui.theme.Prueba_Pablo_MataTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

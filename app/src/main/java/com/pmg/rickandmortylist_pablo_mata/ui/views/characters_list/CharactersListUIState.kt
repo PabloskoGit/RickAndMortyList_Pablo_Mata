@@ -1,6 +1,6 @@
-package com.pmg.prueba_pablo_mata.ui.views.characters_list
+package com.pmg.rickandmortylist_pablo_mata.ui.views.characters_list
 
-import com.pmg.prueba_pablo_mata.domain.model.Character
+import com.pmg.rickandmortylist_pablo_mata.domain.model.Character
 
 sealed class CharactersListUIState {
     data object Loading : CharactersListUIState()

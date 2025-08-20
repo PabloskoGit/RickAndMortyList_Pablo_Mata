@@ -1,4 +1,4 @@
-package com.pmg.prueba_pablo_mata.utils.ui
+package com.pmg.rickandmortylist_pablo_mata.utils.ui
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box

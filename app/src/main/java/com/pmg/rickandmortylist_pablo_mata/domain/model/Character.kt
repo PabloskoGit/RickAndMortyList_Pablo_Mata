@@ -1,4 +1,4 @@
-package com.pmg.prueba_pablo_mata.domain.model
+package com.pmg.rickandmortylist_pablo_mata.domain.model
 
 data class Character(
     val id: Int,

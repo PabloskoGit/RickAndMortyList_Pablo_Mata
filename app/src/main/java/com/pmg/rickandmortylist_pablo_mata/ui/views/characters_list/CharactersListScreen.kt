@@ -1,4 +1,4 @@
-package com.pmg.prueba_pablo_mata.ui.views.characters_list
+package com.pmg.rickandmortylist_pablo_mata.ui.views.characters_list
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -53,11 +53,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter
-import com.pmg.prueba_pablo_mata.R
-import com.pmg.prueba_pablo_mata.domain.model.Character
-import com.pmg.prueba_pablo_mata.domain.usecase.SearchAndFilterUIState
-import com.pmg.prueba_pablo_mata.ui.theme.Prueba_Pablo_MataTheme
-import com.pmg.prueba_pablo_mata.utils.ui.GradientCapsuleBox
+import com.pmg.rickandmortylist_pablo_mata.domain.model.Character
+import com.pmg.rickandmortylist_pablo_mata.ui.views.characters_list.SearchAndFilterUIState
+import com.pmg.rickandmortylist_pablo_mata.ui.theme.Prueba_Pablo_MataTheme
+import com.pmg.rickandmortylist_pablo_mata.utils.ui.GradientCapsuleBox
+import com.pmg.rickandmortylist_pablo_mata.R
 
 @Composable
 fun CharacterListScreen(

@@ -1,4 +1,4 @@
-package com.pmg.prueba_pablo_mata.di
+package com.pmg.rickandmortylist_pablo_mata.di
 
 import android.content.Context
 import coil.ImageLoader
@@ -9,10 +9,10 @@ import coil.request.CachePolicy
 import coil.request.ImageResult
 import coil.request.SuccessResult
 import coil.util.DebugLogger
-import com.pmg.prueba_pablo_mata.data.remote.api.RickAndMortyApi
-import com.pmg.prueba_pablo_mata.domain.repository.CharacterRepository
-import com.pmg.prueba_pablo_mata.domain.repository.CharacterRepositoryImpl
-import com.pmg.prueba_pablo_mata.utils.PARAM_CACHE_KEY
+import com.pmg.rickandmortylist_pablo_mata.data.remote.api.RickAndMortyApi
+import com.pmg.rickandmortylist_pablo_mata.domain.repository.CharacterRepository
+import com.pmg.rickandmortylist_pablo_mata.data.repository.CharacterRepositoryImpl
+import com.pmg.rickandmortylist_pablo_mata.utils.PARAM_CACHE_KEY
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
