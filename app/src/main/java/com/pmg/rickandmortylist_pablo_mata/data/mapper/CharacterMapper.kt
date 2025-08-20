@@ -1,0 +1,15 @@
+package com.pmg.prueba_pablo_mata.data.mapper
+
+import com.pmg.prueba_pablo_mata.data.remote.dto.CharacterDto
+import com.pmg.prueba_pablo_mata.domain.model.Character
+
+fun CharacterDto.toMapDomainModel(): Character {
+    return Character(
+        id = id,
+        name = name,
+        status = status,
+        species = species,
+        imageUrl = image,
+        origin = origin.name
+    )
+}

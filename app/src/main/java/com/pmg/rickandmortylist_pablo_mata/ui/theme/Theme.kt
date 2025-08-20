@@ -1,6 +1,5 @@
-package com.pmg.rickandmortylist_pablo_mata.ui.theme
+package com.pmg.prueba_pablo_mata.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -34,7 +33,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun RickAndMortyList_Pablo_MataTheme(
+fun Prueba_Pablo_MataTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

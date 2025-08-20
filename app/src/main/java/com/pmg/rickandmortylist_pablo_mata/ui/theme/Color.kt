@@ -1,4 +1,4 @@
-package com.pmg.rickandmortylist_pablo_mata.ui.theme
+package com.pmg.prueba_pablo_mata.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
