@@ -55,7 +55,7 @@ import com.pmg.rickandmortylist_pablo_mata.R
 import com.pmg.rickandmortylist_pablo_mata.domain.model.Character
 import com.pmg.rickandmortylist_pablo_mata.domain.model.CharacterLocation
 import com.pmg.rickandmortylist_pablo_mata.domain.model.CharacterOrigin
-import com.pmg.rickandmortylist_pablo_mata.ui.theme.Prueba_Pablo_MataTheme
+import com.pmg.rickandmortylist_pablo_mata.ui.theme.RickAndMortyList_Pablo_MataTheme
 import com.pmg.rickandmortylist_pablo_mata.utils.ui.GradientCapsuleBox
 
 @Composable
@@ -368,7 +368,7 @@ sealed class ImageLoadState {
 )
 @Composable
 fun GreetingPreview() {
-    Prueba_Pablo_MataTheme {
+    RickAndMortyList_Pablo_MataTheme {
 
         val uiStateHome = CharactersListUIState.Success(
             items = listOf(

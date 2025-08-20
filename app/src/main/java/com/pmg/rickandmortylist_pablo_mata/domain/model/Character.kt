@@ -1,8 +1,5 @@
 package com.pmg.rickandmortylist_pablo_mata.domain.model
 
-import com.pmg.rickandmortylist_pablo_mata.data.remote.dto.CharacterLocationDto
-import com.pmg.rickandmortylist_pablo_mata.data.remote.dto.CharacterOriginDto
-
 data class Character(
     val id: Int,
     val name: String,
