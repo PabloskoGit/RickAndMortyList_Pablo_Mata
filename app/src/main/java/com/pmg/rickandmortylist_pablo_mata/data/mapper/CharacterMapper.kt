@@ -9,7 +9,13 @@ fun CharacterDto.toMapDomainModel(): Character {
         name = name,
         status = status,
         species = species,
+        type = type,
+        gender = gender,
+        origin = OriginMapper.toDomainModel(origin),
+        location = LocationMapper.toDomainModel(location),
         imageUrl = image,
-        origin = origin.name
+        episode = episode,
+        url = url,
+        created = created
     )
 }

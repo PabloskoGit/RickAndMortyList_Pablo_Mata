@@ -17,10 +17,8 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.AccountCircle
-import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -53,11 +51,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter
+import com.pmg.rickandmortylist_pablo_mata.R
 import com.pmg.rickandmortylist_pablo_mata.domain.model.Character
-import com.pmg.rickandmortylist_pablo_mata.ui.views.characters_list.SearchAndFilterUIState
+import com.pmg.rickandmortylist_pablo_mata.domain.model.CharacterLocation
+import com.pmg.rickandmortylist_pablo_mata.domain.model.CharacterOrigin
 import com.pmg.rickandmortylist_pablo_mata.ui.theme.Prueba_Pablo_MataTheme
 import com.pmg.rickandmortylist_pablo_mata.utils.ui.GradientCapsuleBox
-import com.pmg.rickandmortylist_pablo_mata.R
 
 @Composable
 fun CharacterListScreen(
@@ -180,9 +179,7 @@ fun CharacterListContent(
                             val character = uiState.items[index]
                             CharacterItem(
                                 character = character,
-                                imageLoader = imageLoader,
-                                isFavorite = false,
-                                onFavoriteClicked = {}
+                                imageLoader = imageLoader
                             )
                         }
 
@@ -236,8 +233,6 @@ fun CharacterItem(
     modifier: Modifier = Modifier,
     character: Character,
     imageLoader: ImageLoader,
-    isFavorite: Boolean,
-    onFavoriteClicked: (Character) -> Unit
 ) {
     var imageState by remember { mutableStateOf<ImageLoadState>(ImageLoadState.Loading) }
 
@@ -326,22 +321,10 @@ fun CharacterItem(
                         modifier = Modifier.weight(1f, fill = false)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        StatusTag(status = character.status)
-                        IconButton(onClick = { onFavoriteClicked(character) }) {
-                            Icon(
-                                imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                                contentDescription = null,
-                                tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
-                    }
+                    StatusTag(status = character.status)
                 }
                 Text(text = "Species: ${character.species}", style = MaterialTheme.typography.bodySmall)
-                Text(text = "Origin: ${character.origin}", style = MaterialTheme.typography.bodySmall)
+                Text(text = "Origin: ${character.origin.name}", style = MaterialTheme.typography.bodySmall)
             }
         }
     }
@@ -395,7 +378,19 @@ fun GreetingPreview() {
                     status = "Alive",
                     species = "Human",
                     imageUrl = "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-                    origin = "Earth (C-137)",
+                    origin = CharacterOrigin(
+                        name = "Earth (C-137)",
+                        url = "https://rickandmortyapi.com/api/location/1"
+                    ),
+                    location = CharacterLocation(
+                        name = "Earth (Replacement Dimension)",
+                        url = "https://rickandmortyapi.com/api/location/20"
+                    ),
+                    type = "",
+                    url = "",
+                    gender = "Male",
+                    episode = listOf("https://rickandmortyapi.com/api/episode/1"),
+                    created = "2017-11-04T18:48:46.250Z"
                 )
             ),
             isLoadingMore = false,
